@@ -1,0 +1,1346 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>کافه دارچین</title>
+
+<style>
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  scroll-behavior:smooth;
+}
+
+body{
+  font-family:Tahoma,Arial,sans-serif;
+  background:#0c0806;
+  color:#fff;
+}
+
+/* NAVBAR */
+
+nav{
+  position:fixed;
+  top:0;
+  width:100%;
+  z-index:1000;
+
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+
+  padding:15px 6%;
+
+  background:rgba(15,9,6,.85);
+  backdrop-filter:blur(18px);
+
+  border-bottom:1px solid rgba(255,255,255,.08);
+}
+
+.logo{
+  color:#f2ad62;
+  font-size:21px;
+  font-weight:bold;
+}
+
+nav ul{
+  display:flex;
+  gap:22px;
+  list-style:none;
+}
+
+nav a{
+  color:#fff;
+  text-decoration:none;
+  font-size:14px;
+  transition:.3s;
+}
+
+nav a:hover{
+  color:#f2ad62;
+}
+
+.cart{
+  position:relative;
+  background:#f2ad62;
+  color:#1a0e08;
+  border:0;
+  padding:10px 14px;
+  border-radius:25px;
+  font-size:18px;
+}
+
+/* HERO */
+
+.hero{
+  min-height:100vh;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  text-align:center;
+
+  background:
+  linear-gradient(rgba(0,0,0,.55),rgba(0,0,0,.85)),
+  url("https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=1600&q=90");
+
+  background-size:cover;
+  background-position:center;
+}
+
+.hero-content{
+  animation:up 1.2s ease;
+}
+
+.hero-icon{
+  font-size:70px;
+  animation:float 3s infinite;
+}
+
+.hero h1{
+  font-size:clamp(45px,10vw,90px);
+  margin:10px;
+}
+
+.hero h1 span{
+  color:#f2ad62;
+}
+
+.hero p{
+  color:#ddd;
+  font-size:19px;
+  margin-bottom:30px;
+}
+
+.btn{
+  display:inline-block;
+  background:#f2ad62;
+  color:#1a0e08;
+  padding:15px 35px;
+  border-radius:40px;
+  text-decoration:none;
+  font-weight:bold;
+  border:0;
+  cursor:pointer;
+  transition:.3s;
+}
+
+.btn:hover{
+  transform:translateY(-5px);
+  box-shadow:0 15px 40px rgba(242,173,98,.25);
+}
+
+/* SECTIONS */
+
+section{
+  padding:90px 6%;
+}
+
+.title{
+  text-align:center;
+  margin-bottom:45px;
+}
+
+.title h2{
+  color:#f2ad62;
+  font-size:38px;
+  margin-bottom:10px;
+}
+
+.title p{
+  color:#999;
+}
+
+/* ABOUT */
+
+.about{
+  max-width:1100px;
+  margin:auto;
+
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:40px;
+  align-items:center;
+}
+
+.about img{
+  width:100%;
+  border-radius:25px;
+}
+
+.about-text h3{
+  font-size:30px;
+  margin-bottom:15px;
+}
+
+.about-text p{
+  color:#aaa;
+  line-height:2;
+}
+
+/* MENU */
+
+.menu{
+  background:#140d09;
+}
+
+/* SEARCH */
+
+.search-box{
+  max-width:700px;
+  margin:0 auto 30px;
+}
+
+.search-box input{
+  width:100%;
+  padding:17px 20px;
+
+  background:#21140e;
+  border:1px solid #3b2619;
+
+  border-radius:40px;
+
+  color:white;
+  font-size:16px;
+  outline:none;
+}
+
+.search-box input:focus{
+  border-color:#f2ad62;
+}
+
+/* FILTER */
+
+.filters{
+  display:flex;
+  justify-content:center;
+  flex-wrap:wrap;
+  gap:10px;
+  margin-bottom:35px;
+}
+
+.filter{
+  border:1px solid #4a2e1c;
+  background:#1c100b;
+  color:#ddd;
+  padding:10px 18px;
+  border-radius:25px;
+  cursor:pointer;
+}
+
+.filter.active,
+.filter:hover{
+  background:#f2ad62;
+  color:#160b06;
+}
+
+/* MENU GRID */
+
+.menu-grid{
+  max-width:1150px;
+  margin:auto;
+
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:22px;
+}
+
+.card{
+  background:#21140e;
+  border-radius:22px;
+  overflow:hidden;
+
+  border:1px solid rgba(255,255,255,.06);
+
+  transition:.35s;
+}
+
+.card:hover{
+  transform:translateY(-8px);
+  border-color:#f2ad62;
+}
+
+.card img{
+  width:100%;
+  height:200px;
+  object-fit:cover;
+}
+
+.card-body{
+  padding:20px;
+}
+
+.card h3{
+  font-size:20px;
+  margin-bottom:8px;
+}
+
+.card p{
+  color:#999;
+  line-height:1.8;
+  font-size:14px;
+}
+
+.price-row{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-top:18px;
+}
+
+.price{
+  color:#f2ad62;
+  font-weight:bold;
+  font-size:18px;
+}
+
+.add{
+  background:#f2ad62;
+  color:#1a0d07;
+  border:0;
+  width:42px;
+  height:42px;
+  border-radius:50%;
+  font-size:24px;
+  cursor:pointer;
+  transition:.3s;
+}
+
+.add:hover{
+  transform:rotate(90deg) scale(1.1);
+}
+
+/* CONTACT */
+
+.contact{
+  max-width:900px;
+  margin:auto;
+}
+
+.contact-box{
+  background:linear-gradient(135deg,#28170e,#130b07);
+  border:1px solid #3b2517;
+  border-radius:25px;
+  padding:40px;
+  text-align:center;
+}
+
+.contact-item{
+  margin:20px;
+  color:#ccc;
+}
+
+/* FOOTER */
+
+footer{
+  text-align:center;
+  padding:30px;
+  background:#070403;
+  color:#777;
+}
+
+footer span{
+  color:#f2ad62;
+}
+
+/* CART PANEL */
+
+.cart-panel{
+  position:fixed;
+  top:0;
+  right:-100%;
+  width:min(420px,100%);
+  height:100vh;
+
+  z-index:2000;
+
+  background:#140d09;
+
+  box-shadow:-20px 0 60px rgba(0,0,0,.5);
+
+  transition:.4s;
+
+  display:flex;
+  flex-direction:column;
+}
+
+.cart-panel.open{
+  right:0;
+}
+
+.cart-header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+
+  padding:20px;
+
+  border-bottom:1px solid #382319;
+}
+
+.close{
+  background:none;
+  border:0;
+  color:white;
+  font-size:28px;
+}
+
+.cart-items{
+  flex:1;
+  overflow:auto;
+  padding:20px;
+}
+
+.cart-item{
+  background:#21140e;
+  padding:15px;
+  border-radius:15px;
+  margin-bottom:12px;
+
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.cart-item small{
+  color:#999;
+}
+
+.qty{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  margin-top:8px;
+}
+
+.qty button{
+  width:28px;
+  height:28px;
+  border:0;
+  border-radius:50%;
+  background:#f2ad62;
+}
+
+.cart-footer{
+  padding:20px;
+  border-top:1px solid #382319;
+}
+
+.total{
+  display:flex;
+  justify-content:space-between;
+  margin-bottom:15px;
+  font-size:20px;
+}
+
+.empty{
+  text-align:center;
+  color:#888;
+  margin-top:80px;
+}
+
+/* TOAST */
+
+.toast{
+  position:fixed;
+  bottom:25px;
+  left:50%;
+
+  transform:translateX(-50%) translateY(100px);
+
+  background:#f2ad62;
+  color:#1b0d07;
+
+  padding:14px 22px;
+  border-radius:30px;
+
+  z-index:3000;
+
+  transition:.4s;
+  font-weight:bold;
+}
+
+.toast.show{
+  transform:translateX(-50%) translateY(0);
+}
+
+/* ANIMATION */
+
+@keyframes up{
+  from{
+    opacity:0;
+    transform:translateY(35px);
+  }
+
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+
+@keyframes float{
+  0%,100%{
+    transform:translateY(0);
+  }
+
+  50%{
+    transform:translateY(-12px);
+  }
+}
+
+/* MOBILE */
+
+@media(max-width:800px){
+
+  nav{
+    padding:13px 15px;
+  }
+
+  nav ul{
+    gap:10px;
+  }
+
+  nav a{
+    font-size:11px;
+  }
+
+  .logo{
+    font-size:16px;
+  }
+
+  .about{
+    grid-template-columns:1fr;
+  }
+
+  .menu-grid{
+    grid-template-columns:1fr;
+  }
+
+  section{
+    padding:70px 15px;
+  }
+
+  .hero h1{
+    font-size:48px;
+  }
+
+  .title h2{
+    font-size:32px;
+  }
+
+}
+
+</style>
+</head>
+
+
+<body>
+
+
+<!-- NAVBAR -->
+
+<nav>
+
+<div class="logo">
+☕ کافه دارچین
+</div>
+
+<ul>
+<li><a href="#home">خانه</a></li>
+<li><a href="#about">درباره</a></li>
+<li><a href="#menu">منو</a></li>
+<li><a href="#contact">تماس</a></li>
+</ul>
+
+<button class="cart" onclick="openCart()">
+🛒 <span id="cartCount">0</span>
+</button>
+
+</nav>
+
+
+<!-- HERO -->
+
+<section class="hero" id="home">
+
+<div class="hero-content">
+
+<div class="hero-icon">☕</div>
+
+<h1>
+کافه <span>دارچین</span>
+</h1>
+
+<p>
+یک فنجان قهوه، یک حال خوب ❤️
+</p>
+
+<a href="#menu" class="btn">
+مشاهده منو
+</a>
+
+</div>
+
+</section>
+
+
+<!-- ABOUT -->
+
+<section id="about">
+
+<div class="title">
+
+<h2>درباره کافه</h2>
+
+<p>
+جایی برای قهوه، آرامش و خاطره‌های خوب
+</p>
+
+</div>
+
+
+<div class="about">
+
+<img src="https://images.unsplash.com/photo-1511081692775-05d0f180a065?auto=format&fit=crop&w=1000&q=90">
+
+
+<div class="about-text">
+
+<h3>
+طعم واقعی قهوه ☕
+</h3>
+
+<p>
+در کافه دارچین بهترین نوشیدنی‌ها و دسرها را
+در فضایی گرم و صمیمی برای شما آماده می‌کنیم.
+</p>
+
+<br>
+
+<p>
+اینجا می‌توانی با دوستانت وقت بگذرانی،
+درس بخوانی یا فقط یک قهوه خوشمزه نوش جان کنی.
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- MENU -->
+
+<section class="menu" id="menu">
+
+<div class="title">
+
+<h2>منوی کافه</h2>
+
+<p>
+نوشیدنی مورد علاقه‌ات را پیدا کن ☕
+</p>
+
+</div>
+
+
+<!-- SEARCH -->
+
+<div class="search-box">
+
+<input
+type="text"
+id="search"
+placeholder="🔍 جستجوی نوشیدنی..."
+onkeyup="searchMenu()">
+
+</div>
+
+
+<!-- FILTER -->
+
+<div class="filters">
+
+<button class="filter active" onclick="filterMenu('all',this)">
+همه
+</button>
+
+<button class="filter" onclick="filterMenu('coffee',this)">
+قهوه
+</button>
+
+<button class="filter" onclick="filterMenu('cold',this)">
+سرد
+</button>
+
+<button class="filter" onclick="filterMenu('dessert',this)">
+دسر
+</button>
+
+</div>
+
+
+<div class="menu-grid" id="menuGrid">
+
+
+<!-- ESPRESSO -->
+
+<div class="card" data-category="coffee" data-name="اسپرسو">
+
+<img src="https://images.unsplash.com/photo-1510707577719-ae7c14805e32?auto=format&fit=crop&w=900&q=90">
+
+<div class="card-body">
+
+<h3>اسپرسو ☕</h3>
+
+<p>
+قهوه غلیظ و خوش‌عطر برای شروع یک روز عالی.
+</p>
+
+<div class="price-row">
+
+<span class="price">
+۸۵٬۰۰۰ تومان
+</span>
+
+<button class="add"
+onclick="addToCart('اسپرسو',85000)">
++
+</button>
+
+</div>
+
+</div>
+</div>
+
+
+<!-- LATTE -->
+
+<div class="card" data-category="coffee" data-name="لاته">
+
+<img src="https://images.unsplash.com/photo-1570968915860-54d5c301fa9f?auto=format&fit=crop&w=900&q=90">
+
+<div class="card-body">
+
+<h3>لاته 🥛</h3>
+
+<p>
+اسپرسو با شیر گرم و کف لطیف.
+</p>
+
+<div class="price-row">
+
+<span class="price">
+۱۲۰٬۰۰۰ تومان
+</span>
+
+<button class="add"
+onclick="addToCart('لاته',120000)">
++
+</button>
+
+</div>
+
+</div>
+</div>
+
+
+<!-- CAPPUCCINO -->
+
+<div class="card" data-category="coffee" data-name="کاپوچینو">
+
+<img src="https://images.unsplash.com/photo-1534778101976-62847782c213?auto=format&fit=crop&w=900&q=90">
+
+<div class="card-body">
+
+<h3>کاپوچینو ☕</h3>
+
+<p>
+قهوه‌ای خوش‌عطر با کف شیر نرم.
+</p>
+
+<div class="price-row">
+
+<span class="price">
+۱۱۵٬۰۰۰ تومان
+</span>
+
+<button class="add"
+onclick="addToCart('کاپوچینو',115000)">
++
+</button>
+
+</div>
+
+</div>
+</div>
+
+
+<!-- ICE COFFEE -->
+
+<div class="card" data-category="cold" data-name="آیس کافی">
+
+<img src="https://images.unsplash.com/photo-1517701604599-bb29b565090c?auto=format&fit=crop&w=900&q=90">
+
+<div class="card-body">
+
+<h3>آیس کافی 🧊</h3>
+
+<p>
+قهوه سرد و خوش‌طعم برای روزهای گرم.
+</p>
+
+<div class="price-row">
+
+<span class="price">
+۱۴۰٬۰۰۰ تومان
+</span>
+
+<button class="add"
+onclick="addToCart('آیس کافی',140000)">
++
+</button>
+
+</div>
+
+</div>
+</div>
+
+
+<!-- MOJITO -->
+
+<div class="card" data-category="cold" data-name="موهیتو">
+
+<img src="https://images.unsplash.com/photo-1551538827-9c037cb4f32a?auto=format&fit=crop&w=900&q=90">
+
+<div class="card-body">
+
+<h3>موهیتو 🍋</h3>
+
+<p>
+نوشیدنی خنک با لیمو و نعناع تازه.
+</p>
+
+<div class="price-row">
+
+<span class="price">
+۱۳۵٬۰۰۰ تومان
+</span>
+
+<button class="add"
+onclick="addToCart('موهیتو',135000)">
++
+</button>
+
+</div>
+
+</div>
+</div>
+
+
+<!-- CHEESECAKE -->
+
+<div class="card" data-category="dessert" data-name="چیزکیک">
+
+<img src="https://images.unsplash.com/photo-1565958011703-44f9829ba187?auto=format&fit=crop&w=900&q=90">
+
+<div class="card-body">
+
+<h3>چیزکیک 🍰</h3>
+
+<p>
+چیزکیک تازه و خوشمزه مخصوص کافه.
+</p>
+
+<div class="price-row">
+
+<span class="price">
+۱۵۰٬۰۰۰ تومان
+</span>
+
+<button class="add"
+onclick="addToCart('چیزکیک',150000)">
++
+</button>
+
+</div>
+
+</div>
+</div>
+
+
+<!-- HOT CHOCOLATE -->
+
+<div class="card" data-category="coffee" data-name="هات چاکلت">
+
+<img src="https://images.unsplash.com/photo-1542990253-0d0f5be5f0ed?auto=format&fit=crop&w=900&q=90">
+
+<div class="card-body">
+
+<h3>هات چاکلت 🍫</h3>
+
+<p>
+شکلات داغ و خامه‌ای.
+</p>
+
+<div class="price-row">
+
+<span class="price">
+۱۳۰٬۰۰۰ تومان
+</span>
+
+<button class="add"
+onclick="addToCart('هات چاکلت',130000)">
++
+</button>
+
+</div>
+
+</div>
+</div>
+
+
+<!-- CROISSANT -->
+
+<div class="card" data-category="dessert" data-name="کروسان">
+
+<img src="https://images.unsplash.com/photo-1555507036-ab1f4038808a?auto=format&fit=crop&w=900&q=90">
+
+<div class="card-body">
+
+<h3>کروسان 🥐</h3>
+
+<p>
+تازه و ترد، مناسب کنار قهوه.
+</p>
+
+<div class="price-row">
+
+<span class="price">
+۱۱۰٬۰۰۰ تومان
+</span>
+
+<button class="add"
+onclick="addToCart('کروسان',110000)">
++
+</button>
+
+</div>
+
+</div>
+</div>
+
+
+</div>
+
+</section>
+
+
+<!-- CONTACT -->
+
+<section id="contact">
+
+<div class="title">
+
+<h2>تماس با ما</h2>
+
+<p>
+منتظرت هستیم ❤️
+</p>
+
+</div>
+
+
+<div class="contact">
+
+<div class="contact-box">
+
+<div class="contact-item">
+📍 تهران، خیابان ولیعصر
+</div>
+
+<div class="contact-item">
+📞 ۰۹۱۲۱۲۳۴۵۶۷
+</div>
+
+<div class="contact-item">
+🕐 هر روز ۸ صبح تا ۱۱ شب
+</div>
+
+<br>
+
+<a
+href="tel:09121234567"
+class="btn">
+
+📞 تماس با کافه
+
+</a>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+© 2026
+
+<span>
+کافه دارچین
+</span>
+
+| ساخته شده با ☕❤️
+
+</footer>
+
+
+<!-- CART -->
+
+<div class="cart-panel" id="cartPanel">
+
+<div class="cart-header">
+
+<h2>
+🛒 سبد خرید
+</h2>
+
+<button class="close" onclick="closeCart()">
+×
+</button>
+
+</div>
+
+
+<div class="cart-items" id="cartItems">
+
+<div class="empty">
+سبد خرید خالی است ☕
+</div>
+
+</div>
+
+
+<div class="cart-footer">
+
+<div class="total">
+
+<span>
+مجموع:
+</span>
+
+<strong id="total">
+۰ تومان
+</strong>
+
+</div>
+
+<button class="btn" style="width:100%"
+onclick="checkout()">
+
+ثبت سفارش
+
+</button>
+
+</div>
+
+</div>
+
+
+<!-- TOAST -->
+
+<div class="toast" id="toast">
+به سبد خرید اضافه شد ☕
+</div>
+
+
+<script>
+
+let cart = [];
+
+
+/* ADD TO CART */
+
+function addToCart(name,price){
+
+let item = cart.find(x => x.name === name);
+
+if(item){
+
+item.qty++;
+
+}else{
+
+cart.push({
+name:name,
+price:price,
+qty:1
+});
+
+}
+
+updateCart();
+
+showToast();
+
+}
+
+
+/* UPDATE CART */
+
+function updateCart(){
+
+let container =
+document.getElementById("cartItems");
+
+let count = 0;
+let total = 0;
+
+container.innerHTML = "";
+
+
+if(cart.length === 0){
+
+container.innerHTML =
+'<div class="empty">سبد خرید خالی است ☕</div>';
+
+}else{
+
+cart.forEach((item,index)=>{
+
+count += item.qty;
+
+total += item.price * item.qty;
+
+
+let div =
+document.createElement("div");
+
+div.className="cart-item";
+
+div.innerHTML=`
+
+<div>
+
+<strong>${item.name}</strong>
+
+<div class="qty">
+
+<button onclick="changeQty(${index},-1)">
+−
+</button>
+
+<span>${item.qty}</span>
+
+<button onclick="changeQty(${index},1)">
++
+</button>
+
+</div>
+
+</div>
+
+<strong>
+${formatPrice(item.price * item.qty)}
+</strong>
+
+`;
+
+container.appendChild(div);
+
+});
+
+}
+
+
+document.getElementById("cartCount").innerText=count;
+
+document.getElementById("total").innerText=
+formatPrice(total);
+
+}
+
+
+/* CHANGE QUANTITY */
+
+function changeQty(index,value){
+
+cart[index].qty += value;
+
+if(cart[index].qty <= 0){
+
+cart.splice(index,1);
+
+}
+
+updateCart();
+
+}
+
+
+/* PRICE */
+
+function formatPrice(number){
+
+return number.toLocaleString("fa-IR")+" تومان";
+
+}
+
+
+/* CART */
+
+function openCart(){
+
+document
+.getElementById("cartPanel")
+.classList.add("open");
+
+}
+
+function closeCart(){
+
+document
+.getElementById("cartPanel")
+.classList.remove("open");
+
+}
+
+
+/* TOAST */
+
+function showToast(){
+
+let toast =
+document.getElementById("toast");
+
+toast.classList.add("show");
+
+setTimeout(()=>{
+
+toast.classList.remove("show");
+
+},1800);
+
+}
+
+
+/* SEARCH */
+
+function searchMenu(){
+
+let value =
+document
+.getElementById("search")
+.value
+.toLowerCase();
+
+let cards =
+document.querySelectorAll(".card");
+
+cards.forEach(card=>{
+
+let name =
+card.dataset.name.toLowerCase();
+
+if(name.includes(value)){
+
+card.style.display="block";
+
+}else{
+
+card.style.display="none";
+
+}
+
+});
+
+}
+
+
+/* FILTER */
+
+function filterMenu(category,button){
+
+document
+.querySelectorAll(".filter")
+.forEach(btn=>{
+btn.classList.remove("active");
+});
+
+button.classList.add("active");
+
+
+document
+.querySelectorAll(".card")
+.forEach(card=>{
+
+if(category==="all" ||
+card.dataset.category===category){
+
+card.style.display="block";
+
+}else{
+
+card.style.display="none";
+
+}
+
+});
+
+}
+
+
+/* CHECKOUT */
+
+function checkout(){
+
+if(cart.length===0){
+
+alert("سبد خرید شما خالی است ☕");
+
+return;
+
+}
+
+let text="سفارش شما:\n\n";
+
+let total=0;
+
+cart.forEach(item=>{
+
+text +=
+item.name+
+" × "+
+item.qty+
+" = "+
+formatPrice(item.price*item.qty)+
+"\n";
+
+total += item.price*item.qty;
+
+});
+
+text +=
+"\nمجموع: "+
+formatPrice(total);
+
+
+alert(text+"\n\nبرای ثبت نهایی سفارش با کافه تماس بگیرید 📞");
+
+}
+
+</script>
+
+
+</body>
+</html>
